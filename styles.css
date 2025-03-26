@@ -1,0 +1,1274 @@
+/* 基础重置与变量 */
+:root {
+    /* 主色调方案 */
+    --deep-space-black: #141414;
+    --film-red: #E50914;
+    --tech-blue: #00D4FF;
+    --gold-accent: #D4AF37;
+    
+    /* 中性色 */
+    --dark-gray: #1F1F1F;
+    --mid-gray: #333333;
+    --light-gray: #666666;
+    --off-white: #E5E5E5;
+    
+    /* 功能色 */
+    --success: #27AE60;
+    --warning: #E67E22;
+    --error: #E74C3C;
+    
+    /* 玻璃拟态效果 */
+    --glass-bg: rgba(20, 20, 20, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    
+    /* 投影参数 */
+    --text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    /* 宽高比与尺寸 */
+    --aspect-ratio: 21/9;
+    --content-max-width: 1800px;
+    --header-height: 100vh;
+}
+
+/* 深色模式变量 */
+[data-theme="dark"] {
+    --glass-bg: rgba(10, 10, 10, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--deep-space-black);
+    color: var(--off-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 加载动画 */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--deep-space-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.film-reveal {
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.film-stripe {
+    height: 80px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8) 0px,
+        rgba(0, 0, 0, 0.8) 20px,
+        rgba(255, 255, 255, 0.2) 20px,
+        rgba(255, 255, 255, 0.2) 40px
+    );
+    border-radius: 4px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.film-stripe:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    animation: filmReveal 2s infinite;
+}
+
+.progress-bar {
+    height: 4px;
+    width: 100%;
+    background-color: var(--mid-gray);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--tech-blue), var(--film-red));
+    animation: progressFill 3s ease-in-out forwards;
+}
+
+.loader-text {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--off-white);
+    opacity: 0.8;
+}
+
+/* 电影式主视觉区 */
+.cinematic-header {
+    position: relative;
+    height: var(--header-height);
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: var(--aspect-ratio);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        0deg, 
+        var(--deep-space-black) 0%, 
+        rgba(20, 20, 20, 0.6) 50%, 
+        rgba(20, 20, 20, 0.8) 100%
+    );
+}
+
+.title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    max-width: var(--content-max-width);
+    z-index: 2;
+}
+
+.cinematic-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8.5rem;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--off-white);
+    text-shadow: var(--text-shadow), 
+                 0 0 30px rgba(0, 212, 255, 0.2),
+                 0 0 60px rgba(0, 212, 255, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%) perspective(1200px) rotateX(8deg) scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.cinematic-title::before {
+    content: '乌市土地分析报告';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(255, 255, 255, 0.05);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    transform: translateZ(-10px);
+}
+
+.cinematic-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--tech-blue) 30%,
+                var(--film-red) 70%,
+                transparent 100%);
+    filter: blur(2px);
+    opacity: 0.8;
+}
+
+.subtitle {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--tech-blue);
+    letter-spacing: 4px;
+    margin-bottom: 60px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    opacity: 0.9;
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--tech-blue) 20%,
+                var(--tech-blue) 80%,
+                transparent 100%);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+}
+
+.scroll-indicator span {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.arrow-down {
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid var(--off-white);
+    border-bottom: 2px solid var(--off-white);
+    transform: rotate(45deg);
+    animation: arrowBounce 2s infinite;
+}
+
+/* 导航栏 */
+.film-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: var(--content-max-width);
+    border-radius: 0 0 15px 15px;
+    margin-top: 0;
+    background: linear-gradient(180deg, 
+                rgba(20, 20, 20, 0.9) 0%,
+                rgba(20, 20, 20, 0.7) 100%);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    border-top: none;
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: var(--off-white);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    position: relative;
+    padding-left: 15px;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 70%;
+    background: linear-gradient(to bottom, var(--tech-blue), var(--film-red));
+    border-radius: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--off-white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--tech-blue);
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--tech-blue), var(--film-red));
+    transition: width 0.3s ease;
+    opacity: 0.8;
+}
+
+.nav-link:hover:after {
+    width: 70%;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(51, 51, 51, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.mode-icon {
+    width: 22px;
+    height: 22px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E5E5E5'%3E%3Cpath d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 60%, rgba(0, 212, 255, 0.2));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover::after {
+    opacity: 1;
+}
+
+/* 添加滚动时导航栏样式 */
+.film-nav.scrolled .nav-container {
+    background: rgba(20, 20, 20, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 10px 5%;
+}
+
+/* 磨砂玻璃拟态 */
+.glass-morph {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: var(--glass-shadow);
+}
+
+/* 主要内容区 */
+.content-container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.section-container {
+    padding: 40px;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: var(--content-max-width);
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: var(--off-white);
+    text-shadow: var(--text-shadow);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--film-red), var(--tech-blue));
+}
+
+.sub-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    color: var(--off-white);
+}
+
+/* 数据卡片 */
+.data-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.data-card {
+    padding: 30px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.data-card:hover {
+    transform: perspective(1000px) rotateY(30deg) rotateZ(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.residential {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E50914'%3E%3Cpath d='M19 21H5C3.89543 21 3 20.1046 3 19V12H2V10H3V5C3 3.89543 3.89543 3 5 3H8V7H16V3H19C20.1046 3 21 3.89543 21 5V10H22V12H21V19C21 20.1046 20.1046 21 19 21ZM5 12V19H19V12H5ZM5 10H19V5H17V9H7V5H5V10Z'/%3E%3C/svg%3E");
+}
+
+.commercial {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300D4FF'%3E%3Cpath d='M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM8 9H16V11H8V9ZM8 13H16V15H8V13Z'/%3E%3C/svg%3E");
+}
+
+.mixed {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4AF37'%3E%3Cpath d='M21 19H23V21H1V19H3V4C3 3.44772 3.44772 3 4 3H14C14.5523 3 15 3.44772 15 4V19H17V9H20C20.5523 9 21 9.44772 21 10V19ZM13 5H5V19H13V5Z'/%3E%3C/svg%3E");
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hologram-data {
+    font-family: 'Trajan Pro', serif;
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--tech-blue);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--tech-blue), 0 0 20px var(--tech-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.hologram-data:before,
+.hologram-data:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--tech-blue);
+    opacity: 0.6;
+    animation: hologramScan 2s linear infinite;
+}
+
+.hologram-data:before {
+    top: 0;
+    left: 0;
+}
+
+.hologram-data:after {
+    bottom: 0;
+    right: 0;
+}
+
+/* 粒子背景 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#particles {
+    width: 100%;
+    height: 100%;
+}
+
+/* 动画关键帧 */
+@keyframes filmReveal {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes progressFill {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes arrowBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    40% {
+        transform: rotate(45deg) translateY(-10px);
+    }
+    60% {
+        transform: rotate(45deg) translateY(-5px);
+    }
+}
+
+@keyframes hologramScan {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .cinematic-title {
+        font-size: 6.5rem;
+        letter-spacing: 8px;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .cinematic-title {
+        font-size: 5rem;
+        letter-spacing: 6px;
+    }
+    
+    .subtitle {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+    
+    .nav-container {
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cinematic-title {
+        font-size: 3.5rem;
+        letter-spacing: 4px;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .film-nav .logo {
+        margin: 0 auto;
+    }
+    
+    .nav-container {
+        justify-content: space-between;
+    }
+    
+    .data-cards,
+    .analysis-grid,
+    .forecast-visual,
+    .enterprise-cards,
+    .strategy-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .cinematic-header {
+        height: 80vh;
+    }
+    
+    .section-container {
+        padding: 25px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cinematic-title {
+        font-size: 2.8rem;
+        letter-spacing: 3px;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .data-card, 
+    .analysis-card, 
+    .forecast-item, 
+    .enterprise-card, 
+    .strategy-card {
+        padding: 20px 15px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hologram-data {
+        font-size: 2.5rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* 区域分析部分 */
+.region-analysis {
+    margin-top: 60px;
+}
+
+.region-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.region-card {
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.region-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--tech-blue);
+}
+
+.region-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 分析卡片网格 */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.analysis-card {
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.analysis-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--off-white);
+    font-weight: 700;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.feature-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--film-red);
+    border-radius: 50%;
+}
+
+/* 趋势预测部分 */
+.forecast-visual {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.forecast-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.uptrend {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2327AE60'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z'/%3E%3C/svg%3E");
+}
+
+.downtrend {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E74C3C'%3E%3Cpath d='M16.1716 13.0001H4V11.0001H16.1716L10.8076 5.63611L12.2218 4.2219L20 12.0001L12.2218 19.7783L10.8076 18.3641L16.1716 13.0001Z' transform='rotate(180 12 12)'/%3E%3C/svg%3E");
+}
+
+.stable {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E67E22'%3E%3Cpath d='M18 8C19.1046 8 20 8.89543 20 10V14C20 15.1046 19.1046 16 18 16H6C4.89543 16 4 15.1046 4 14V10C4 8.89543 4.89543 8 6 8H18ZM18 10H6V14H18V10Z'/%3E%3C/svg%3E");
+}
+
+.forecast-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.forecast-content p {
+    line-height: 1.6;
+}
+
+/* 策略部分 */
+.strategy-section {
+    margin-top: 60px;
+}
+
+.strategy-container {
+    padding: 30px;
+}
+
+.strategy-item {
+    margin-bottom: 25px;
+}
+
+.strategy-item:last-child {
+    margin-bottom: 0;
+}
+
+.strategy-item h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--gold-accent);
+}
+
+.strategy-item p {
+    line-height: 1.6;
+}
+
+/* 企业分析部分 */
+.enterprise-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.enterprise-card {
+    padding: 30px;
+    transition: all 0.4s ease;
+}
+
+.enterprise-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.logo1 {
+    background-color: var(--film-red);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFFFFF'%3E%3Cpath d='M21 19H23V21H1V19H3V4C3 3.44772 3.44772 3 4 3H20C20.5523 3 21 3.44772 21 4V19ZM5 19H19V5H5V19ZM7 11H11V17H7V11ZM13 7H17V17H13V7ZM7 7H11V9H7V7Z'/%3E%3C/svg%3E");
+}
+
+.logo2 {
+    background-color: var(--tech-blue);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFFFFF'%3E%3Cpath d='M2 21V8H7V3H17V8H22V21H2ZM4 19H9V10H4V19ZM11 19H13V17H11V19ZM11 15H13V13H11V15ZM11 11H13V9H11V11ZM11 7H13V5H11V7ZM15 19H20V10H15V19ZM15 8H17V3H9V8H15Z'/%3E%3C/svg%3E");
+}
+
+.logo3 {
+    background-color: var(--gold-accent);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFFFFF'%3E%3Cpath d='M2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H16C16 18.6863 13.3137 16 10 16C6.68629 16 4 18.6863 4 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11ZM18.2837 14.7028C21.1571 15.7550 23 18.6687 23 22H21C21 19.5121 19.614 17.3215 17.5 16.2583L18.2837 14.7028ZM17.5 2.27953C19.9312 3.44673 21.5 5.98402 21.5 9C21.5 12.0160 19.9312 14.5533 17.5 15.7205V13.5302C18.8387 12.6174 19.5 10.8761 19.5 9C19.5 7.12386 18.8387 5.38258 17.5 4.46977V2.27953Z'/%3E%3C/svg%3E");
+}
+
+.enterprise-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.enterprise-data {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-label {
+    font-weight: 500;
+    color: var(--light-gray);
+}
+
+.data-value {
+    font-weight: 600;
+    color: var(--off-white);
+}
+
+/* GIS数据部分 */
+.gis-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (min-width: 992px) {
+    .gis-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.gis-map {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-layers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.layer {
+    position: absolute;
+    opacity: 0.7;
+}
+
+.red-zone {
+    top: 20%;
+    left: 10%;
+    width: 40%;
+    height: 30%;
+    background-color: rgba(229, 9, 20, 0.3);
+    border: 2px solid rgba(229, 9, 20, 0.8);
+    border-radius: 20px;
+}
+
+.blue-zone {
+    top: 30%;
+    left: 40%;
+    width: 45%;
+    height: 40%;
+    background-color: rgba(0, 212, 255, 0.3);
+    border: 2px solid rgba(0, 212, 255, 0.8);
+    border-radius: 20px;
+}
+
+.green-zone {
+    top: 60%;
+    left: 20%;
+    width: 30%;
+    height: 25%;
+    background-color: rgba(39, 174, 96, 0.3);
+    border: 2px solid rgba(39, 174, 96, 0.8);
+    border-radius: 20px;
+}
+
+.roads {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='10%25' y1='50%25' x2='90%25' y2='50%25' stroke='rgba(255,255,255,0.5)' stroke-width='2'/%3E%3Cline x1='50%25' y1='10%25' x2='50%25' y2='90%25' stroke='rgba(255,255,255,0.5)' stroke-width='2'/%3E%3Cline x1='20%25' y1='20%25' x2='80%25' y2='80%25' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3Cline x1='80%25' y1='20%25' x2='20%25' y2='80%25' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.markers {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30%25' cy='30%25' r='5' fill='%23E50914'/%3E%3Ccircle cx='60%25' cy='40%25' r='5' fill='%2300D4FF'/%3E%3Ccircle cx='75%25' cy='65%25' r='5' fill='%23D4AF37'/%3E%3Ccircle cx='25%25' cy='70%25' r='5' fill='%2327AE60'/%3E%3C/svg%3E");
+}
+
+.gis-data-table {
+    padding: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-table th {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--tech-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.data-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 策略卡片 */
+.strategy-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.strategy-card {
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.strategy-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--film-red);
+}
+
+.strategy-list {
+    list-style: none;
+}
+
+.strategy-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.strategy-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--gold-accent);
+    border-radius: 50%;
+}
+
+.strategy-list li strong {
+    color: var(--tech-blue);
+    font-weight: 600;
+}
+
+/* 页脚区域 */
+.site-footer {
+    padding: 40px 5%;
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: var(--content-max-width);
+}
+
+.footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--off-white);
+}
+
+.footer-info {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+}
+
+.footer-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: var(--tech-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--off-white);
+}
+
+/* 无障碍相关样式 */
+.keyboard-focus {
+    outline: 2px solid var(--film-red) !important;
+    outline-offset: 3px !important;
+}
+
+/* 暗色模式切换相关样式 */
+[data-theme="light"] {
+    --deep-space-black: #f0f0f0;
+    --off-white: #141414;
+    --light-gray: #555555;
+    --mid-gray: #888888;
+    --glass-bg: rgba(240, 240, 240, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+    .data-card, 
+    .analysis-card, 
+    .forecast-item, 
+    .enterprise-card, 
+    .strategy-card {
+        padding: 20px;
+    }
+    
+    .cinematic-header {
+        height: 80vh;
+    }
+    
+    .cinematic-title {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+/* 平板触摸优化 */
+@media (hover: none) {
+    .data-card:hover,
+    .enterprise-card:hover,
+    .strategy-card:hover {
+        transform: none !important;
+    }
+    
+    .nav-link:hover:after {
+        width: 0;
+    }
+}
+
+/* 横向滚动触摸支持 */
+.data-cards,
+.region-cards,
+.analysis-grid,
+.forecast-visual,
+.enterprise-cards,
+.strategy-cards {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+}
+
+/* 触摸反馈效果 */
+@media (hover: none) and (pointer: coarse) {
+    .data-card:active,
+    .region-card:active,
+    .analysis-card:active,
+    .forecast-item:active,
+    .enterprise-card:active,
+    .strategy-card:active {
+        transform: scale(0.98);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-link:active {
+        color: var(--film-red);
+        background: rgba(255, 255, 255, 0.1);
+    }
+} 

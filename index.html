@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乌市土地分析报告 | 2024-2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loader">
+        <div class="film-reveal">
+            <div class="film-stripe"></div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="loader-text">正在加载分析数据...</div>
+        </div>
+    </div>
+    
+    <!-- 电影式主视觉区 -->
+    <header class="cinematic-header">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="background-video">
+                <!-- WebM格式城市航拍视频 -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-buildings-at-night-11-large.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="title-container">
+            <h1 class="cinematic-title">乌市土地分析报告</h1>
+            <p class="subtitle">2024-2025年摘地情况战略分析</p>
+            <div class="scroll-indicator">
+                <span>向下滚动探索</span>
+                <div class="arrow-down"></div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 导航栏 -->
+    <nav class="film-nav">
+        <div class="nav-container glass-morph">
+            <div class="logo">乌市土地报告</div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="nav-link">市场概况</a></li>
+                <li><a href="#land-analysis" class="nav-link">土地分析</a></li>
+                <li><a href="#trend-forecast" class="nav-link">趋势预测</a></li>
+                <li><a href="#enterprise-analysis" class="nav-link">企业分析</a></li>
+                <li><a href="#gis-data" class="nav-link">GIS数据</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <span class="mode-icon"></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主要内容区 -->
+    <main class="content-container">
+        <!-- 市场概况部分 -->
+        <section id="overview" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">市场数据概述</h2>
+                
+                <div class="data-cards">
+                    <div class="data-card glass-morph">
+                        <div class="card-icon residential"></div>
+                        <div class="card-content">
+                            <h3>住宅用地</h3>
+                            <div class="hologram-data">58%</div>
+                            <p>平均楼面价6500元/㎡</p>
+                        </div>
+                    </div>
+                    
+                    <div class="data-card glass-morph">
+                        <div class="card-icon commercial"></div>
+                        <div class="card-content">
+                            <h3>商业用地</h3>
+                            <div class="hologram-data">26%</div>
+                            <p>高科技园区10万㎡地块频出</p>
+                        </div>
+                    </div>
+                    
+                    <div class="data-card glass-morph">
+                        <div class="card-icon mixed"></div>
+                        <div class="card-content">
+                            <h3>商办用地</h3>
+                            <div class="hologram-data">52%</div>
+                            <p>溢价率最高达52%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="region-analysis">
+                    <h3 class="sub-section-title">区域分布特点</h3>
+                    <div class="region-cards">
+                        <div class="region-card glass-morph">
+                            <h4>高新区</h4>
+                            <p>住宅楼面价突破6500元/㎡，区域热度持续升高</p>
+                        </div>
+                        <div class="region-card glass-morph">
+                            <h4>经开区</h4>
+                            <p>工业用地平均地价近42万元/亩，产业布局持续优化</p>
+                        </div>
+                        <div class="region-card glass-morph">
+                            <h4>沙依巴克</h4>
+                            <p>60%地块含商业/产业复合要求</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 土地分析部分 -->
+        <section id="land-analysis" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">土地市场深度分析</h2>
+                
+                <div class="analysis-grid">
+                    <div class="analysis-card glass-morph">
+                        <h3>住宅市场</h3>
+                        <ul class="feature-list">
+                            <li>高品质改善性产品（容积率1.5地块）去化率高于普通品质40%</li>
+                            <li>形成"高新>经开>沙区>水区"的价格梯度，价差约2800元/㎡</li>
+                            <li>水区楼盘去化周期达22个月，远高于同质化区域</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analysis-card glass-morph">
+                        <h3>商业市场</h3>
+                        <ul class="feature-list">
+                            <li>TOD模式兴起：轨道站点周边商业用地溢价率达15%</li>
+                            <li>小于5000㎡的小体量商业地块成交溢价率8%</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analysis-card glass-morph">
+                        <h3>产业地产</h3>
+                        <ul class="feature-list">
+                            <li>产业写字楼：高品质低容积率（3.0）的产业混合用地</li>
+                            <li>生态资源依托：环中心区域用地成交价同等级高180%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 趋势预测部分 -->
+        <section id="trend-forecast" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">市场趋势预测</h2>
+                
+                <div class="forecast-visual">
+                    <div class="forecast-item glass-morph">
+                        <div class="forecast-icon uptrend"></div>
+                        <div class="forecast-content">
+                            <h3>上涨趋势</h3>
+                            <p>保障性建设用地占比将增加至20%（当前平均8%）</p>
+                        </div>
+                    </div>
+                    
+                    <div class="forecast-item glass-morph">
+                        <div class="forecast-icon downtrend"></div>
+                        <div class="forecast-content">
+                            <h3>下降趋势</h3>
+                            <p>工业用地首付款比例降至50%（原为70%）</p>
+                        </div>
+                    </div>
+                    
+                    <div class="forecast-item glass-morph">
+                        <div class="forecast-icon stable"></div>
+                        <div class="forecast-content">
+                            <h3>市场稳定</h3>
+                            <p>商办用地交易量将维持在4%左右</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 class="sub-section-title">投资策略建议</h3>
+                    <div class="strategy-container glass-morph">
+                        <div class="strategy-item">
+                            <h4>区位选择策略</h4>
+                            <p>高新北城更新地块（连接经开区）工业产业10.88万㎡地块仅1.3%摘牌</p>
+                        </div>
+                        <div class="strategy-item">
+                            <h4>产品定位策略</h4>
+                            <p>重点布局80-120㎡改善性产品，面积前后比1:1.7</p>
+                        </div>
+                        <div class="strategy-item">
+                            <h4>价格策略制定</h4>
+                            <p>采用"成本导向定价"，预留8-12%调价空间</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 企业分析部分 -->
+        <section id="enterprise-analysis" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">重点摘地企业分析</h2>
+                
+                <div class="enterprise-cards">
+                    <div class="enterprise-card glass-morph">
+                        <div class="enterprise-logo logo1"></div>
+                        <h3>新疆木垒华丰地产集团</h3>
+                        <div class="enterprise-data">
+                            <div class="data-item">
+                                <span class="data-label">区域布局</span>
+                                <span class="data-value">高新北区专注</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">产品特点</span>
+                                <span class="data-value">专注于2.5容积率的改善性产品</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">资金情况</span>
+                                <span class="data-value">资产负债率68%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="enterprise-card glass-morph">
+                        <div class="enterprise-logo logo2"></div>
+                        <h3>新疆德胜集团</h3>
+                        <div class="enterprise-data">
+                            <div class="data-item">
+                                <span class="data-label">区域布局</span>
+                                <span class="data-value">沙区轨道综合开发沿线</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">资金实力</span>
+                                <span class="data-value">母公司为新疆铁建集团</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">战略布局</span>
+                                <span class="data-value">2025年计划获取30万㎡产业相关用地</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="enterprise-card glass-morph">
+                        <div class="enterprise-logo logo3"></div>
+                        <h3>新疆金地品牌</h3>
+                        <div class="enterprise-data">
+                            <div class="data-item">
+                                <span class="data-label">品牌力</span>
+                                <span class="data-value">中高端住宅与商业产业TOP3</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">库存管控</span>
+                                <span class="data-value">现有库存去化周期仅20个月</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">用地偏好</span>
+                                <span class="data-value">容积率在2.5-3.0的改善地块</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- GIS数据部分 -->
+        <section id="gis-data" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">GIS数据可视化分析</h2>
+                
+                <div class="gis-container">
+                    <div class="gis-map">
+                        <!-- 这里将是一个交互式GIS地图 -->
+                        <div class="map-placeholder glass-morph">
+                            <div class="map-layers">
+                                <div class="layer red-zone" title="高新区"></div>
+                                <div class="layer blue-zone" title="经开区"></div>
+                                <div class="layer green-zone" title="水区"></div>
+                                <div class="layer roads"></div>
+                                <div class="layer markers"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gis-data-table glass-morph">
+                        <h3>区域关键指标对比</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>指标</th>
+                                    <th>高新区</th>
+                                    <th>经开区</th>
+                                    <th>水区</th>
+                                    <th>全市平均</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>住宅成交楼面价(元/㎡)</td>
+                                    <td>6520</td>
+                                    <td>5240</td>
+                                    <td>-</td>
+                                    <td>4860</td>
+                                </tr>
+                                <tr>
+                                    <td>工业地价(万元/亩)</td>
+                                    <td>-</td>
+                                    <td>85</td>
+                                    <td>42</td>
+                                    <td>64</td>
+                                </tr>
+                                <tr>
+                                    <td>商办去化周期(月)</td>
+                                    <td>28</td>
+                                    <td>19</td>
+                                    <td>-</td>
+                                    <td>34</td>
+                                </tr>
+                                <tr>
+                                    <td>地块溢价率</td>
+                                    <td>18%</td>
+                                    <td>9%</td>
+                                    <td>23%</td>
+                                    <td>15%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 公司策略建议 -->
+        <section id="company-strategy" class="section parallax-section">
+            <div class="section-container glass-morph">
+                <h2 class="section-title">公司策略建议</h2>
+                
+                <div class="strategy-cards">
+                    <div class="strategy-card glass-morph">
+                        <h3>区位选择建议</h3>
+                        <ul class="strategy-list">
+                            <li>优先布局未来发展带（2025年乌鲁木齐4号环线用地）</li>
+                            <li>对标安集路地块木垒华丰布局，容积率4.48，高于周边地块容积率2.0-2.5倍</li>
+                            <li>采用EPC模式，降低建设成本8-12%</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="strategy-card glass-morph">
+                        <h3>投资布局路径</h3>
+                        <ul class="strategy-list">
+                            <li><strong>产业端：</strong>对接新疆丝路诗意，1034亩产业用地层面返还并获取15%住宅指标</li>
+                            <li><strong>资金：</strong>采用平台合作，引入自然人股东，优化股权结构</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="strategy-card glass-morph">
+                        <h3>投资管控建议</h3>
+                        <ul class="strategy-list">
+                            <li><strong>地块筛选：</strong>构建GIS地块价值评估模型，核心参数：1km周边品质去化速度、周边规划学校等级等</li>
+                            <li><strong>资金链：</strong>关注地块支付节点，预证标取，把握回款周期</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚区域 -->
+    <footer class="site-footer glass-morph">
+        <div class="footer-content">
+            <div class="footer-logo">乌市土地报告</div>
+            <div class="footer-info">
+                <p>© 2024 乌市土地分析报告. 保留所有权利</p>
+                <p>数据更新时间: 2024年6月</p>
+            </div>
+            <div class="footer-nav">
+                <a href="#overview">市场概况</a>
+                <a href="#land-analysis">土地分析</a>
+                <a href="#trend-forecast">趋势预测</a>
+                <a href="#enterprise-analysis">企业分析</a>
+                <a href="#gis-data">GIS数据</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 粒子背景 -->
+    <div class="particles-container">
+        <canvas id="particles"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
